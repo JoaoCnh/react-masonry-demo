@@ -1,5 +1,5 @@
 const API_KEY = 'YOUR API KEY';
-const ROOT_URL = 'http://ws.audioscrobbler.com/2.0';
+const ROOT_URL = 'https://ws.audioscrobbler.com/2.0';
 
 export const getTopAlbums = async (userName, page = 1) => {
 	const res = await fetch(`${ROOT_URL}?method=user.gettopalbums&user=${userName}&api_key=${API_KEY}&format=json&page=${page}`);
