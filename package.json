@@ -8,7 +8,6 @@
     "react-dom": "^15.6.1",
     "react-infinite-scroller": "^1.0.14",
     "react-masonry-component": "^5.0.7",
-    "react-scripts": "1.0.10",
     "throttle-debounce": "^1.0.1"
   },
   "scripts": {
@@ -20,6 +19,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "react-scripts": "1.0.10",
     "gh-pages": "^1.0.0",
     "jest": "^20.0.4"
   }
