@@ -1,4 +1,4 @@
-const API_KEY = 'YOUR API KEY';
+const API_KEY = 'fd5e5f6b436d78d4d01f0682dc399f6b';
 const ROOT_URL = 'https://ws.audioscrobbler.com/2.0';
 
 export const getTopAlbums = async (userName, page = 1) => {
@@ -10,7 +10,12 @@ export const getTopAlbums = async (userName, page = 1) => {
 			name: album.name,
 			lastfm_url: album.url,
 			artist: album.artist,
-			image: album.image[3]['#text'],
+			image: {
+				url: album.image[3]['#text'],
+				alt: album.name,
+				width: 300,
+				height: 300,
+			},
 		};
 	});
 
