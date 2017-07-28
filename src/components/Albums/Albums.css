@@ -1,33 +1,37 @@
 .Albums-Container {
-	height: 600px;
-	overflow-y: scroll !important;
-	width: 97%;
-	margin-left: 30px;
+	margin-left: 5px;
+}
+
+.Album-Container {
+	overflow: hidden !important;
 }
 
 .Album {
 	position: relative;
+	height: 300px;
+	width: 300px;
 }
 
 .Album .Album-Info {
 	position: absolute;
-	bottom: 0;
+	bottom: auto;
 	width: 300px;
 	color: #fff;
 	background: rgba(0, 0, 0, .5);
 	opacity: 0;
-	-webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
+	-webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
 }
 
 .Album-Container:hover .Album-Info {
 	opacity: 1;
-	-webkit-transition: opacity 0.5s ease-in-out;
-  -moz-transition: opacity 0.5s ease-in-out;
-  -o-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
+	bottom: 0;
+	-webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
 }
 
 .Album-Info h1 {

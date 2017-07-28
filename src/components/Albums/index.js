@@ -1,25 +1,60 @@
 import React from 'react';
-import Masonry from 'react-masonry-component';
-import InfiniteScroll from 'react-infinite-scroller';
+import {
+	Masonry,
+	CellMeasurer,
+	CellMeasurerCache,
+	createMasonryCellPositioner,
+} from 'react-virtualized';
 
 import Album from './Album';
 
 import './Albums.css';
 
+const columnCount = 6;
+const defaultHeight = 300;
+const defaultWidth = 300;
+const fullWidth = (defaultWidth * columnCount) + 60;
+
+const cache = new CellMeasurerCache({
+	defaultHeight,
+	defaultWidth,
+	fixedWidth: true,
+});
+
+const cellPositioner = createMasonryCellPositioner({
+	cellMeasurerCache: cache,
+	columnCount,
+	columnWidth: defaultWidth,
+	spacer: 10,
+});
+
 export default ({ albums, isLoading, page, totalPages, loadMore }) => {
-	console.log("== RENDER ALBUMS ==");
+	const cellRenderer = ({ index, key, parent, style }) => {
+		const album = albums[index];
+
+		return (
+			<CellMeasurer cache={cache} index={index} key={key} parent={parent}>
+				<Album style={style} album={album} />
+			</CellMeasurer>
+		);
+	};
+
+	const listenScroll = ({ clientHeight, scrollHeight, scrollTop }) => {
+		const infiniteBarrier = Math.abs(scrollHeight - clientHeight);
+		const isFinalPage = page === totalPages;
+		const shouldLoadMore = scrollTop >= infiniteBarrier && !isFinalPage;
+
+		if (!shouldLoadMore) { return; } 
+
+		return loadMore();
+	};
 
 	return (
 		<div className="Albums-Container">
-			<InfiniteScroll pageStart={page - 1} loadMore={loadMore}
-				hasMore={page < totalPages} loader={<span>...</span>}
-				useWindow={false} threshold={150}>
-				<Masonry className="Albums">
-					{albums.map((album, index) => (
-						<Album key={index} album={album} />
-					))}
-				</Masonry>
-			</InfiniteScroll>
+			<Masonry cellCount={albums.length} cellMeasurerCache={cache}
+				cellPositioner={cellPositioner} cellRenderer={cellRenderer}
+				onScroll={listenScroll}
+				height={700} width={fullWidth} />
 		</div>
 	);
 }

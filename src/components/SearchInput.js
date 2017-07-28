@@ -2,8 +2,6 @@ import React from 'react';
 import './SearchInput.css';
 
 export default ({ isLoading, onChange }) => {
-	console.log('== RENDER SEARCH_INPUT ==');
-
 	const _onChange = (event) => {
 		onChange(event.target.value);
 	};

@@ -61,12 +61,10 @@ class App extends Component {
   }
 
   render() {
-    console.log('== RENDER APP ==');
-
     const body = this.state.error ? <Error error={this.state.error} /> :
       (<Albums albums={this.state.albums} isLoading={this.state.isLoading}
-            page={this.state.page} totalPages={this.state.totalPages}
-            loadMore={this._loadMore.bind(this)} />);
+        page={this.state.page} totalPages={this.state.totalPages}
+        loadMore={this._loadMore.bind(this)} />);
 
     return (
       <div className="App">

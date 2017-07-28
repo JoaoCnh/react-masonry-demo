@@ -17,7 +17,7 @@
 .App-body {
   background: #2d2d2d;
   height: calc(100vh - 150px);
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 .App-error {
