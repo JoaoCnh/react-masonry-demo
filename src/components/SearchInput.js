@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchInput.css';
 
-export default ({ onChange }) => {
+export default ({ isLoading, onChange }) => {
 	console.log('== RENDER SEARCH_INPUT ==');
 
 	const _onChange = (event) => {
@@ -11,7 +11,7 @@ export default ({ onChange }) => {
 	return (
 		<div className="container">
 			<div className="group">
-	      <input type="text" onChange={_onChange} required />
+	      <input type="text" disabled={isLoading} onChange={_onChange} required />
 	      <span className="highlight"></span>
 	      <span className="bar"></span>
 	      <label>{`LAST.FM Username`}</label>

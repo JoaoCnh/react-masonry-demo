@@ -1,0 +1,31 @@
+.Album {
+	position: relative;
+}
+
+.Album .Album-Info {
+	position: absolute;
+	bottom: 0;
+	width: 300px;
+	color: #fff;
+	background: rgba(0, 0, 0, .5);
+	opacity: 0;
+	-webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.Album-Container:hover .Album-Info {
+	opacity: 1;
+	-webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.Album-Info h1 {
+	font-size: 1.5em;
+}
+.Album-Info h2 {
+	font-size: 1em;
+}

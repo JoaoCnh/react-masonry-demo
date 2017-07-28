@@ -31,6 +31,16 @@ input 				{
   border-bottom:1px solid #757575;
 }
 
+input:disabled {
+  cursor: not-allowed;
+  background: #eceeef;
+  opacity: 1;
+}
+
+input:disabled ~ label {
+  display: none;
+}
+
 input:focus {
   outline:none;
 }

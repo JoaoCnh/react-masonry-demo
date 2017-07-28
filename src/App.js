@@ -36,9 +36,10 @@ class App extends Component {
       });
     }
 
-    const { albums, pageInfo } = await getTopAlbums(userName, this.state.page);
+    const { albums, pageInfo, error } = await getTopAlbums(userName, this.state.page);
 
     this.setState({
+      isLoading: false,
       userName: userName,
       albums: albums,
       page: pageInfo.page,
@@ -47,7 +48,7 @@ class App extends Component {
   }
 
   async _loadMore() {
-    const { albums, pageInfo } = await getTopAlbums(this.state.userName, this.state.page + 1);
+    const { albums, pageInfo, error } = await getTopAlbums(this.state.userName, this.state.page + 1);
 
     this.setState({
       albums: this.state.albums.concat(albums),
@@ -63,7 +64,8 @@ class App extends Component {
       <div className="App">
         <AppHeader />
         <div className="App-body">
-          <SearchInput onChange={this._userNameChanged.bind(this)} />
+          <SearchInput isLoading={this.state.isLoading} 
+            onChange={this._userNameChanged.bind(this)} />
           <Albums albums={this.state.albums} isLoading={this.state.isLoading}
             page={this.state.page} totalPages={this.state.totalPages}
             loadMore={this._loadMore.bind(this)} />

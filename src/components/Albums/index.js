@@ -14,7 +14,7 @@ export default ({ albums, isLoading, page, totalPages, loadMore }) => {
 			<InfiniteScroll pageStart={page - 1} loadMore={loadMore}
 				hasMore={page < totalPages} loader={<span>...</span>}
 				useWindow={false} threshold={150}>
-				<Masonry className="albums">
+				<Masonry className="Albums">
 					{albums.map((album, index) => (
 						<Album key={index} album={album} />
 					))}

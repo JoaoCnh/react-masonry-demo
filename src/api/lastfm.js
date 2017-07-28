@@ -5,6 +5,10 @@ export const getTopAlbums = async (userName, page = 1) => {
 	const res = await fetch(`${ROOT_URL}?method=user.gettopalbums&user=${userName}&api_key=${API_KEY}&format=json&page=${page}`);
 	const json = await res.json();
 
+	if (json.error) {
+		return { error: json.message, albums: [], pageInfo: [] };
+	}
+
 	const albums = json.topalbums.album.map((album) => {
 		return {
 			name: album.name,
