@@ -26,14 +26,18 @@ class App extends Component {
     this._userNameChanged = debounce(500, this._userNameChanged);
   }
 
+  _clearSearch() {
+    this.setState(initialState);
+  }
+
   async _userNameChanged(userName) {
+    if (!userName) {
+      return this._clearSearch();
+    }
+
     this.setState({
       isLoading: true,
     });
-
-    if (!userName) {
-      return this.setState(initialState);
-    }
 
     const { albums, pageInfo, error } = await getTopAlbums(userName, this.state.page);
     const { page, totalPages } = pageInfo;
@@ -70,7 +74,7 @@ class App extends Component {
       <div className="App">
         <AppHeader />
         <div className="App-body">
-          <SearchInput isLoading={this.state.isLoading} 
+          <SearchInput isLoading={this.state.isLoading}
             onChange={this._userNameChanged.bind(this)} />
           {body}
         </div>

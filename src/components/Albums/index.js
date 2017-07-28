@@ -15,20 +15,20 @@ const defaultHeight = 300;
 const defaultWidth = 300;
 const fullWidth = (defaultWidth * columnCount) + 60;
 
-const cache = new CellMeasurerCache({
-	defaultHeight,
-	defaultWidth,
-	fixedWidth: true,
-});
-
-const cellPositioner = createMasonryCellPositioner({
-	cellMeasurerCache: cache,
-	columnCount,
-	columnWidth: defaultWidth,
-	spacer: 10,
-});
-
 export default ({ albums, isLoading, page, totalPages, loadMore }) => {
+	const cache = new CellMeasurerCache({
+		defaultHeight,
+		defaultWidth,
+		fixedWidth: true,
+	});
+
+	const cellPositioner = createMasonryCellPositioner({
+		cellMeasurerCache: cache,
+		columnCount,
+		columnWidth: defaultWidth,
+		spacer: 10,
+	});
+	
 	const cellRenderer = ({ index, key, parent, style }) => {
 		const album = albums[index];
 
@@ -51,10 +51,13 @@ export default ({ albums, isLoading, page, totalPages, loadMore }) => {
 
 	return (
 		<div className="Albums-Container">
-			<Masonry cellCount={albums.length} cellMeasurerCache={cache}
-				cellPositioner={cellPositioner} cellRenderer={cellRenderer}
-				onScroll={listenScroll}
-				height={700} width={fullWidth} />
+			{albums.length > 0 ?
+				<Masonry cellCount={albums.length} cellMeasurerCache={cache}
+					cellPositioner={cellPositioner} cellRenderer={cellRenderer}
+					onScroll={listenScroll}
+					height={700} width={fullWidth} />
+				: <div />
+			}
 		</div>
 	);
 }
