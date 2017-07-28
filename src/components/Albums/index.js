@@ -10,7 +10,7 @@ export default ({ albums, isLoading, page, totalPages, loadMore }) => {
 	console.log("== RENDER ALBUMS ==");
 
 	return (
-		<div style={{height: 600, overflowY: 'scroll'}}>
+		<div className="Albums-Container">
 			<InfiniteScroll pageStart={page - 1} loadMore={loadMore}
 				hasMore={page < totalPages} loader={<span>...</span>}
 				useWindow={false} threshold={150}>

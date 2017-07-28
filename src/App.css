@@ -20,6 +20,27 @@
   overflow-y: auto;
 }
 
+.App-error {
+  position: relative;
+  padding: 10px;
+  padding-left: 35px;
+  margin: 30px 10px;
+  box-shadow:0 2px 5px rgba(0,0,0,.3);
+  background: #C43;
+  color: #FFF;
+  
+  -webkit-transition: all .5s ease;
+     -moz-transition: all .5s ease;
+      -ms-transition: all .5s ease;
+       -o-transition: all .5s ease;
+          transition: all .5s ease;
+}
+
+.App-error:hover {
+  box-shadow: 0 15px 20px rgba(10,0,10,.3);
+  -webkit-filter: brightness(110%);
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

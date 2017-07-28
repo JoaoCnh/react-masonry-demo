@@ -1,3 +1,10 @@
+.Albums-Container {
+	height: 600px;
+	overflow-y: scroll !important;
+	width: 97%;
+	margin-left: 30px;
+}
+
 .Album {
 	position: relative;
 }
